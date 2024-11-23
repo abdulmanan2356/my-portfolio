@@ -1,0 +1,43 @@
+.pic_div {
+    display: flex;
+    justify-content: center;
+    /* position: fixed; */
+    color: #fff;
+    align-items: center;
+    width: 100vw;
+    height: 56vh;
+    background: #FFFF00;
+    opacity: 1;
+    scale: 1;
+    height: 100vh;
+    z-index: 0;
+}
+
+
+.wrapper{
+    
+    display: block;
+    text-align: center;
+    padding: 75px;
+    /* margin-top: 23px;  */
+    overflow: hidden;
+    width: 500px;
+}
+
+.components{
+    
+    overflow: hidden;
+    
+    color: #000;
+    height: 50px;
+    font-size: 2rem;
+    
+}
+.components div {
+    vertical-align: middle;
+    font-size: 30px;
+    font-weight: 300;
+    height: 50px;
+    transition: margin-top 0.7s ease-in-out ;
+}
+
