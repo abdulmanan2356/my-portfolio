@@ -1,16 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
 .pic_div {
     display: flex;
     justify-content: center;
-    /* position: fixed; */
     color: #fff;
     align-items: center;
-    width: 100vw;
-    height: 56vh;
+    width: 100%;
+    height: 100%;
     background: #FFFF00;
     opacity: 1;
     scale: 1;
     height: 100vh;
-    z-index: 0;
+   
 }
 
 

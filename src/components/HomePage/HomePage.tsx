@@ -39,15 +39,18 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <div ref={picDiv} className="pic_div">
-        <div className="subPicDiv max-w-[23vw] max-h-[23vw] min-w-[56px] min-h-[56px] flex justify-center items-center">
+   
+ 
+      <div ref={picDiv}  className="pic_div ">
+        <div className="subPicDiv">
           <img
             loading="lazy"
             onLoad={imageLoadHandler}
             src="src/assets/portfolio_1.png"
             alt=""
           />
-        </div>
+        </div >
+        
 
         <div className="animationSlides">
           <div ref={wrapper} className="wrapper">
