@@ -6,12 +6,12 @@ function App() {
   const first = useRef(null);
   const second = useRef(null);
   const third = useRef(null);
-  const [num, setNum] = useState(0); // Replaced useRef with useState for num
+  const [num, setNum] = useState(0); // replaced useRef with useState for num
   const [FC, setFC] = useState(true);
   const atTop = useRef(false);
   const atBottom = useRef(false);
 
-  function delay(ms:number) {
+  function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
@@ -21,8 +21,8 @@ function App() {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const fullHeight = document.documentElement.scrollHeight;
-      await delay(300);
-      
+      await delay(10);
+
       // Check if at the top
       if (scrollTop === 0) {
         atTop.current = true;
@@ -30,18 +30,18 @@ function App() {
       } else {
         atTop.current = false;
       }
-      
+
       // Check if at the bottom
       if (scrollTop + windowHeight >= fullHeight ) {
-        console.log('scrollTop', scrollTop);
-        console.log('windowHeight', windowHeight);
-        console.log('fullHeight', fullHeight);
+        // console.log('scrollTop', scrollTop);
+        // console.log('windowHeight', windowHeight);
+        // console.log('fullHeight', fullHeight);
         pageSlideHandler();
         atBottom.current = true;
       } else {
         atBottom.current = false;
       }
-      
+
       setFC(!FC);
     };
 
@@ -53,31 +53,31 @@ function App() {
     await delay(100);
     if (atBottom.current) setNum(prevNum => Math.min(prevNum + 1, 2)); // Increment num, max to 2
     if (atTop.current) setNum(prevNum => Math.max(prevNum - 1, 0));  // Decrement num, min to 0
-    
+
     window.scrollTo({ top: 10, behavior: 'smooth' })
     console.log('num', num);
   };
 
   useEffect(() => {
     console.log('fc updated');
-    
+
   }, [num]); // Trigger the effect when num changes
 
   return (
     <>
-      <div className="main relative z-10 bg-white">
+      <div className="main relative z-10 bg-[#FFFF00] ">
         <div
           ref={first}
-          className={`first transition-all duration-700 relative w-[99vw] ${num === 0 ? 'z-10 h-[110vh]' : 'z-0 h-0'}`}
+          className={`first transition-all duration-700 bg-[#FFFF00] relative w-[99vw] ${num === 0 ? 'z-10 h-[100vh]' : 'z-0 h-0'}`} 
         >
-          <HomePage />
+          <HomePage displayBool={num===0 ? 1 : 0} />
         </div>
 
         <div
           ref={second}
-          className={`second relative transition-all duration-700 ${num === 1 ? 'z-10 h-[110vh]' : 'z-0 h-0'}`}
+          className={`second bg-[#0a60ff] flex  items-center relative transition-all duration-700 ${num === 1 ? 'z-10 h-[110vh]' : 'z-0 h-0'}`}
         >
-          <SecondPage />
+          <SecondPage displayBool={num===1 ? 1 : 0} />
         </div>
 
         <div
@@ -120,16 +120,16 @@ useEffect(() => {
 
 setFC(!FC)
 if(num.current > 0 && num.current < 2){
-  console.log('num.current', num.current) 
-  console.log(atBottom.current); 
+  console.log('num.current', num.current)
+  console.log(atBottom.current);
   {atBottom.current ? num.current+=1  : ''}
-  
+
   {atTop.current ? num.current-=1 : ''}
 } else if (num.current ===0 ){
-  console.log("2"); 
+  console.log("2");
   {atBottom.current ? num.current+=1 : ''}
 }else if (num.current ===2){
-  console.log("3"); 
+  console.log("3");
   {atTop.current ? num.current-=1 : ''}
 }
 setFC(!FC)

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './HomePage.css' 
 
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC<{ displayBool: number }> = ({displayBool}) => {
   // Added types for refs to specify they refer to HTMLDivElement or could be null
   const wrapper = useRef<HTMLDivElement | null>(null);
   const components = useRef<HTMLDivElement | null>(null);
@@ -12,6 +12,9 @@ const HomePage: React.FC = () => {
   const imageLoadHandler = () => {
     // Add image load logic here, if any
   };
+
+
+  // const displayBool =  0;
 
   useEffect(() => {
     const wrapperElement = wrapper.current;
