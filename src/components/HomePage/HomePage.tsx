@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './HomePage.css' 
 
 
-const HomePage: React.FC<{ displayBool: number }> = ({displayBool}) => {
+const HomePage: React.FC = () => {
   // Added types for refs to specify they refer to HTMLDivElement or could be null
   const wrapper = useRef<HTMLDivElement | null>(null);
   const components = useRef<HTMLDivElement | null>(null);
@@ -17,14 +17,12 @@ const HomePage: React.FC<{ displayBool: number }> = ({displayBool}) => {
   // const displayBool =  0;
 
   useEffect(() => {
-    const wrapperElement = wrapper.current;
     const componentsElement = components.current;
     let number = 0;
 
     const interval = setInterval(() => {
       if (componentsElement) { // Checked if componentsElement exists to avoid potential null errors
         const height = componentsElement.getBoundingClientRect().height;
-        const numberOfDivs = componentsElement.children.length;
 
         if (number > 2) {
           number = 0;

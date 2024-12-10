@@ -6,83 +6,48 @@ function App() {
   const first = useRef(null);
   const second = useRef(null);
   const third = useRef(null);
-  const [num, setNum] = useState(0); // replaced useRef with useState for num
-  const [FC, setFC] = useState(true);
-  const atTop = useRef(false);
-  const atBottom = useRef(false);
+  const [bgColor, setBgColor] = useState("bg-[#FFFF00]"); // Default color
+  const windowHeight = window.innerHeight;
 
-  function delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  const scrollHandler = () => {
+    let scroll = window.scrollY;
 
-  useEffect(() => {
-    const topHandleScroll = async () => {
-
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const fullHeight = document.documentElement.scrollHeight;
-      await delay(10);
-
-      // Check if at the top
-      if (scrollTop === 0) {
-        atTop.current = true;
-        pageSlideHandler();
-      } else {
-        atTop.current = false;
-      }
-
-      // Check if at the bottom
-      if (scrollTop + windowHeight >= fullHeight ) {
-        // console.log('scrollTop', scrollTop);
-        // console.log('windowHeight', windowHeight);
-        // console.log('fullHeight', fullHeight);
-        pageSlideHandler();
-        atBottom.current = true;
-      } else {
-        atBottom.current = false;
-      }
-
-      setFC(!FC);
-    };
-
-    window.addEventListener('scroll', topHandleScroll);
-    return () => window.removeEventListener('scroll', topHandleScroll);
-  }, [FC]);
-
-  const pageSlideHandler = async () => {
-    await delay(100);
-    if (atBottom.current) setNum(prevNum => Math.min(prevNum + 1, 2)); // Increment num, max to 2
-    if (atTop.current) setNum(prevNum => Math.max(prevNum - 1, 0));  // Decrement num, min to 0
-
-    window.scrollTo({ top: 10, behavior: 'smooth' })
-    console.log('num', num);
+    if (scroll>0 && scroll < windowHeight * 0.8) {
+      setBgColor("bg-[#FFFF00]");
+      console.log(scroll)
+    }
+     else if (scroll > windowHeight * 0.8 && scroll < windowHeight * 1.8) {
+      setBgColor("bg-[#0099FF]");
+    } else if (scroll > windowHeight * 1.8) {
+      setBgColor("bg-[#E0FF00]");
+    }
   };
 
   useEffect(() => {
-    console.log('fc updated');
-
-  }, [num]); // Trigger the effect when num changes
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   return (
     <>
-      <div className="main relative z-10 bg-[#FFFF00] ">
+      <div className="main relative z-10">
         <div
           ref={first}
-          className={`first transition-all duration-700 bg-[#FFFF00] relative w-[99vw] ${num === 0 ? 'z-10 h-[100vh]' : 'z-0 h-0'}`} 
+          className={`first transition-all opacity-100 duration-700 ${bgColor} relative w-[99vw] z-10 h-[100vh]`}
         >
-          <HomePage displayBool={num===0 ? 1 : 0} />
+          <HomePage />
         </div>
 
         <div
           ref={second}
-          className={`second bg-[#0a60ff] flex  items-center relative transition-all duration-700 ${num === 1 ? 'z-10 h-[110vh]' : 'z-0 h-0'}`}
+          className={`second flex items-center relative transition-all duration-700 ${bgColor} z-10 h-[110vh]`}
         >
-          <SecondPage displayBool={num===1 ? 1 : 0} />
+          <SecondPage displayBool={1} />
         </div>
 
         <div
           ref={third}
-          className={`third relative transition-all duration-700 bg-red-600 ${num === 2 ? 'z-10 h-[110vh]' : 'z-0 h-0'}`}
+          className={`third relative transition-all duration-700 ${bgColor} z-10 h-[110vh]`}
         ></div>
       </div>
     </>
@@ -90,7 +55,6 @@ function App() {
 }
 
 export default App;
-
 
 /*
 

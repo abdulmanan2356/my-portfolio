@@ -20,12 +20,12 @@ const SecondPage : React.FC<{ displayBool: number }> = ({displayBool}) => {
     <div className = {`main  flex flex-col items-center justify-center ${displayBool===1 ? 'h-[90vh] ' :'h-0 hidden' }   gap-[25%]  bg-[#ffffff] w-[99vw + 2px]`}   >  
     
     <div>
-    <Cards displayBool={displayBool} svgObj={figmaSvg} text_1={""}     height={150} width={800} />
+    <Cards  svgObj={figmaSvg} text_1={""}     height={150} width={800} />
     </div>
 
     <div>
-    <Cards displayBool={displayBool} svgObj={nextJs} text_1={""}     height={150} width={900} />
-    <Cards displayBool={displayBool}  svgObj={reactSvg}  text_1={""} height={550} width={750} />
+    <Cards  svgObj={nextJs} text_1={""}     height={150} width={900} />
+    <Cards   svgObj={reactSvg}  text_1={""} height={550} width={750} />
     </div>
 
     </div>
