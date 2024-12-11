@@ -3,9 +3,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.z-inherit{
-    z-index: inherit;
-}
-*{
-    z-index: inherit;
-}

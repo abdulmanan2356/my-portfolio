@@ -40,14 +40,14 @@ function App() {
 
         <div
           ref={second}
-          className={`second flex items-center relative transition-all duration-700 ${bgColor} z-10 h-[110vh]`}
+          className={`second flex items-center relative transition-all duration-700 ${bgColor} z-10 h-[100vh]`}
         >
-          <SecondPage displayBool={1} />
+          <SecondPage  />
         </div>
 
         <div
           ref={third}
-          className={`third relative transition-all duration-700 ${bgColor} z-10 h-[110vh]`}
+          className={`third relative transition-all duration-700 ${bgColor} z-10 h-[100vh]`}
         ></div>
       </div>
     </>

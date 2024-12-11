@@ -3,7 +3,6 @@ import './HomePage.css'
 
 
 const HomePage: React.FC = () => {
-  // Added types for refs to specify they refer to HTMLDivElement or could be null
   const wrapper = useRef<HTMLDivElement | null>(null);
   const components = useRef<HTMLDivElement | null>(null);
   const picDiv = useRef<HTMLDivElement | null>(null);
@@ -42,7 +41,7 @@ const HomePage: React.FC = () => {
     <>
    
  
-      <div ref={picDiv}  className="pic_div ">
+      <div ref={picDiv}  className=" h-[100vh] md:flex-row flex-col flex justify-center text-white items-center w-full ">
         <div className="subPicDiv">
           <img
             loading="lazy"
