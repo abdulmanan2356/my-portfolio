@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import SecondPage from './components/SecondPage/SecondPage';
 import HomePage from './components/HomePage/HomePage';
 import ThirdPage from './components/ThirdPage/ThirdPage';
-
-
+import Navbar  from './components/NavBar/NavBar';
 function App() {
   const first = useRef(null);
   const second = useRef(null);
@@ -13,12 +12,11 @@ function App() {
 
   const scrollHandler = () => {
     let scroll = window.scrollY;
+    if(scroll<= 0){setBgColor("bg-[#FFFF00]")}
 
-    if (scroll>0 && scroll < windowHeight * 0.8) {
+    if (scroll > 0 && scroll < windowHeight * 0.8) {
       setBgColor("bg-[#FFFF00]");
-      // console.log(scroll)
-    }
-     else if (scroll > windowHeight * 0.8 && scroll < windowHeight * 1.8) {
+    } else if (scroll > windowHeight * 0.8 && scroll < windowHeight * 1.8) {
       setBgColor("bg-[#0099FF]");
     } else if (scroll > windowHeight * 1.8) {
       setBgColor("bg-[#E0FF00]");
@@ -33,7 +31,9 @@ function App() {
   return (
     <>
       <div className="main relative z-10">
+        <Navbar />
         <div
+          id="home"
           ref={first}
           className={`first transition-all opacity-100 duration-700 ${bgColor} relative w-[99vw] z-10 h-[100vh]`}
         >
@@ -41,13 +41,15 @@ function App() {
         </div>
 
         <div
+          id="second"
           ref={second}
-          className={`second flex  relative transition-all  duration-700 ${bgColor} z-10 h-[100vh]`}
+          className={`second flex flex-col relative transition-all duration-700 ${bgColor} z-10 h-[100vh]`}
         >
-          <SecondPage  />
+          <SecondPage />
         </div>
 
         <div
+          id="third"
           ref={third}
           className={`third relative flex items-center justify-center transition-all duration-700 ${bgColor} z-10 h-[100vh]`}
         >
@@ -59,7 +61,3 @@ function App() {
 }
 
 export default App;
-
-/*
-
-*/
