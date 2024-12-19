@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import SecondPage from './components/SecondPage/SecondPage';
 import HomePage from './components/HomePage/HomePage';
+import ThirdPage from './components/ThirdPage/ThirdPage';
+
 
 function App() {
   const first = useRef(null);
@@ -14,7 +16,7 @@ function App() {
 
     if (scroll>0 && scroll < windowHeight * 0.8) {
       setBgColor("bg-[#FFFF00]");
-      console.log(scroll)
+      // console.log(scroll)
     }
      else if (scroll > windowHeight * 0.8 && scroll < windowHeight * 1.8) {
       setBgColor("bg-[#0099FF]");
@@ -40,15 +42,17 @@ function App() {
 
         <div
           ref={second}
-          className={`second flex items-center relative transition-all duration-700 ${bgColor} z-10 h-[100vh]`}
+          className={`second flex  relative transition-all  duration-700 ${bgColor} z-10 h-[100vh]`}
         >
           <SecondPage  />
         </div>
 
         <div
           ref={third}
-          className={`third relative transition-all duration-700 ${bgColor} z-10 h-[100vh]`}
-        ></div>
+          className={`third relative flex items-center justify-center transition-all duration-700 ${bgColor} z-10 h-[100vh]`}
+        >
+          <ThirdPage />
+        </div>
       </div>
     </>
   );
@@ -58,46 +62,4 @@ export default App;
 
 /*
 
-
-
-useEffect(() => {
-  const topHandleScroll =async () => {
-    await delay(500)
-    if (window.scrollY > 0){
-      num.current =+ 1
-    }else if (window.scrollY < 0){
-      if(num.current > 0){
-        num.current =+ 1
-      }
-    }
-    console.log(num.current)
-  };
-
-  window.addEventListener('scroll', topHandleScroll);
-  return () => window.removeEventListener('scroll', topHandleScroll);
-}, []);
-
-
 */
-
-/*
-
-setFC(!FC)
-if(num.current > 0 && num.current < 2){
-  console.log('num.current', num.current)
-  console.log(atBottom.current);
-  {atBottom.current ? num.current+=1  : ''}
-
-  {atTop.current ? num.current-=1 : ''}
-} else if (num.current ===0 ){
-  console.log("2");
-  {atBottom.current ? num.current+=1 : ''}
-}else if (num.current ===2){
-  console.log("3");
-  {atTop.current ? num.current-=1 : ''}
-}
-setFC(!FC)
-console.log('num',num.current)
-*/
-// Comment the command to scroll to a specific position
-// window.scrollTo({ top: 0, behavior: 'smooth' });
