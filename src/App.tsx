@@ -14,9 +14,9 @@ function App() {
     let scroll = window.scrollY;
     if(scroll<= 0){setBgColor("bg-[#FFFF00]")}
 
-    if (scroll > 0 && scroll < windowHeight * 0.8) {
+    if (scroll > 0 && scroll < windowHeight * 0.7) {
       setBgColor("bg-[#FFFF00]");
-    } else if (scroll > windowHeight * 0.8 && scroll < windowHeight * 1.8) {
+    } else if (scroll > windowHeight * 0.7 && scroll < windowHeight * 1.8) {
       setBgColor("bg-[#0099FF]");
     } else if (scroll > windowHeight * 1.8) {
       setBgColor("bg-[#E0FF00]");
@@ -35,7 +35,7 @@ function App() {
         <div
           id="home"
           ref={first}
-          className={`first transition-all opacity-100 duration-700 ${bgColor} relative w-[99vw] z-10 h-[100vh]`}
+          className={`first transition-all opacity-100 duration-700 ${bgColor} relative w-[99vw] z-10 h-[110vh]`}
         >
           <HomePage />
         </div>
